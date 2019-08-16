@@ -49,7 +49,7 @@
     // call the toggleAction
   }
 
-  const createList = () => {
+  const createList = (phone_name) => {
     // NB: Virtual Elements don't exist in DOM after creation. 
     const listEl =  // creates a virtual Element
     // adds a class to the Virtual Elements
@@ -76,16 +76,18 @@
   // runs the code
   const startApp = () => {
     // create the phoneList
-
+    let phoneList = [];
     for (let model of PHONE_MODELS) {
-      const listEl =  // call createList here
+      const listEl = createList(model); // call createList here
+      phoneList.push(listEl);
     }
 
     // call addToList here
+    addToList(phoneList);
   }
 
   // call startApp
-  
+  startApp();
   </script>
 </body>
 
