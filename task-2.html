@@ -30,12 +30,13 @@
   <script>
   const PHONE_MODELS = [
     'Huawei Y7', 'Infinix', 'Tecno', 'iPhoneX',
-    'Xiomi', 'Oppo', 'Samsung',
+    'Xiomi', 'Oppo', 'Samsung', 'Nokia',
   ]
-
+  
   // adds the click event to 
   const activeToggleButton = (listEl) => {
     const arrowButton = listEl.querySelector('.toggle-btn');
+    
     const toggleAction = () => {
       if (listEl.classList.contains('is-active')) {
         listEl.classList.remove('is-active');
@@ -47,12 +48,14 @@
     }
 
     // call the toggleAction
+    arrowButton.addEventListener('click', toggleAction);
   }
 
   const createList = (phone_name) => {
     // NB: Virtual Elements don't exist in DOM after creation. 
-    const listEl =  // creates a virtual Element
+    const listEl = document.createElement("li"); // creates a virtual Element
     // adds a class to the Virtual Elements
+    listEl.classList.add("fancy__list");
     listEl.innerHTML = `
         <div class="text">${phone_name}</div>
         <button class="toggle-btn">&lt;</button>
@@ -60,7 +63,7 @@
         <button class="bg-orange-200">-</button>
         <button class="bg-red-200">x</button>
     `;
-
+    activeToggleButton(listEl);
     return listEl
   }
 
